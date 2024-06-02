@@ -18,6 +18,10 @@
             <!--<p class="card-text">
               <%= bookmark.movie.overview %>
             </p>-->
+            <%= link_to "Delete",
+                bookmark_path(bookmark.id),
+                data: {turbo_method: :delete},
+                class: "btn btn-warning" %>
           </div>
         </div>
       <% end %>
@@ -34,16 +38,3 @@
     </div>
   </div>
 </div>
-
-<!--<% @list.bookmarks.each do |bookmark| %>
-  <h2><%= bookmark.movie.title %> (<%= bookmark.movie.rating %>)</h2>
-  <p><%= bookmark.movie.overview %></p>
-  <%= link_to "Delete",
-      bookmark_path(bookmark.id),
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-<% end %>
-<br>
-<br>
-<%= link_to "Add bookmark", new_list_bookmark_path(@list) %>
-<br>
-<%= link_to "Back to my lists", lists_path %>-->
