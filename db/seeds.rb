@@ -8,6 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 Movie.destroy_all
+List.destroy_all
+Bookmark.destroy_all
 
 url = "https://tmdb.lewagon.com/movie/top_rated"
 movies = JSON.parse(URI.open(url).read)

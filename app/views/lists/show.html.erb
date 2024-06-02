@@ -1,6 +1,41 @@
-<h1><%= @list.name %></h1>
+<div class="border-bottom bg-white" style="margin-bottom: 10px;">
+  <div class="container" style="padding-top: 10px; padding-bottom: 10px;">
+    <h2 style="margin: 0;"><%= @list.name %></h2>
+  </div>
+</div>
 
-<% @list.bookmarks.each do |bookmark| %>
+<div class="container">
+  <div class="row">
+    <div class="col-8 cards">
+      <% @list.bookmarks.each do |bookmark| %>
+        <div class="card">
+          <img class="card-img-top" src=<%=bookmark.movie.poster_url%>>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= bookmark.movie.title %>
+              (<%= bookmark.movie.rating %>)
+            </h5>
+            <!--<p class="card-text">
+              <%= bookmark.movie.overview %>
+            </p>-->
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-4">
+      <div class="bg-white border p-3">
+        <p class="fs-4">Add a new bookmark</p>
+        <%= simple_form_for [@list, @bookmark] do |f| %>
+        <%= f.association :movie %>
+        <%= f.input :comment %>
+        <%= f.submit class: "btn btn-primary"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<% @list.bookmarks.each do |bookmark| %>
   <h2><%= bookmark.movie.title %> (<%= bookmark.movie.rating %>)</h2>
   <p><%= bookmark.movie.overview %></p>
   <%= link_to "Delete",
@@ -11,4 +46,4 @@
 <br>
 <%= link_to "Add bookmark", new_list_bookmark_path(@list) %>
 <br>
-<%= link_to "Back to my lists", lists_path %>
+<%= link_to "Back to my lists", lists_path %>-->

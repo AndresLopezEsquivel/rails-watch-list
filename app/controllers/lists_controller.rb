@@ -3,20 +3,24 @@ class ListsController < ApplicationController
 
   def index
     @lists = List.all
-  end
-
-  def show; end
-
-  def new
     @list = List.new
   end
 
+  def show
+    @bookmark = Bookmark.new
+  end
+
+  # def new
+  #   @list = List.new
+  # end
+
   def create
+    @lists = List.all
     @list = List.new(list_params)
     if @list.save
       redirect_to lists_path
     else
-      render :new, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 
