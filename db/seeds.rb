@@ -7,9 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+Bookmark.destroy_all
 Movie.destroy_all
 List.destroy_all
-Bookmark.destroy_all
 
 url = "https://tmdb.lewagon.com/movie/top_rated"
 movies = JSON.parse(URI.open(url).read)

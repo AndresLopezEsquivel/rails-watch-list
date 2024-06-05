@@ -8,7 +8,8 @@
   <div class="row">
     <div class="col-8 cards">
       <% @lists.each do |list| %>
-        <div class="card" style="height: 100px;">
+        <div class="card border shadow-sm bg-light">
+        <%= cl_image_tag list.cover.key %>
           <div class="card-body d-flex align-items-center justify-content-center">
             <%= link_to list.name,
                 list,
@@ -22,6 +23,7 @@
         <p class="fs-4">Add a new list</p>
         <%= simple_form_for(@list) do |f|%>
         <%= f.input :name %>
+        <%= f.input :cover, as: :file %>
         <%= f.submit class: "btn btn-primary"%>
         <% end %>
       </div>
